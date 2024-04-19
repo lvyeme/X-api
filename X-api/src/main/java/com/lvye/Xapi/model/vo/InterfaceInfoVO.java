@@ -1,10 +1,14 @@
 package com.lvye.Xapi.model.vo;
 
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.*;
+import com.lvye.Xapi.model.entity.InterfaceInfo;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 接口封装类
@@ -73,6 +77,36 @@ public class InterfaceInfoVO implements Serializable {
      * 创建接口人的信息
      */
     private UserVO userVO;
+
+    /**
+     * 包装类转对象
+     *
+     * @param interfaceinfoVO
+     * @return
+     */
+    public static InterfaceInfo voToObj(InterfaceInfoVO interfaceinfoVO) {
+        if (interfaceinfoVO == null) {
+            return null;
+        }
+        InterfaceInfo interfaceinfo = new InterfaceInfo();
+        BeanUtils.copyProperties(interfaceinfoVO, interfaceinfo);
+        return interfaceinfo;
+    }
+
+    /**
+     * 对象转包装类
+     *
+     * @param interfaceinfo
+     * @return
+     */
+    public static InterfaceInfoVO objToVo(InterfaceInfo interfaceinfo) {
+        if (interfaceinfo == null) {
+            return null;
+        }
+        InterfaceInfoVO interfaceinfoVO = new InterfaceInfoVO();
+        BeanUtils.copyProperties(interfaceinfo, interfaceinfoVO);
+        return interfaceinfoVO;
+    }
 
     private static final long serialVersionUID = 1L;
 }

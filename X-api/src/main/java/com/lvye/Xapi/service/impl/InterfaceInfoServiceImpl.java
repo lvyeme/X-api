@@ -8,32 +8,24 @@ import com.lvye.Xapi.common.ErrorCode;
 import com.lvye.Xapi.constant.CommonConstant;
 import com.lvye.Xapi.exception.BusinessException;
 import com.lvye.Xapi.exception.ThrowUtils;
+import com.lvye.Xapi.mapper.InterfaceInfoMapper;
 import com.lvye.Xapi.model.dto.interfaceInfo.InterfaceInfoQueryRequest;
-import com.lvye.Xapi.model.entity.*;
+import com.lvye.Xapi.model.entity.InterfaceInfo;
+import com.lvye.Xapi.model.entity.User;
 import com.lvye.Xapi.model.vo.InterfaceInfoVO;
 import com.lvye.Xapi.model.vo.UserVO;
 import com.lvye.Xapi.service.InterfaceInfoService;
-import com.lvye.Xapi.mapper.InterfaceInfoMapper;
 import com.lvye.Xapi.service.UserService;
 import com.lvye.Xapi.utils.SqlUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.sort.SortBuilder;
-import org.elasticsearch.search.sort.SortBuilders;
-import org.elasticsearch.search.sort.SortOrder;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
-import org.springframework.data.elasticsearch.core.SearchHit;
-import org.springframework.data.elasticsearch.core.SearchHits;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -70,7 +62,7 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
         }
         // 有参数则校验
         if (StringUtils.isNotBlank(name) && name.length() > 80) {
-            throw new BusinessException(ErrorCode.PARAMS_ERROR, "名字过长");
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "名称过长");
         }
         if (StringUtils.isNotBlank(url) && url.length() > 8192) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "连接过长");

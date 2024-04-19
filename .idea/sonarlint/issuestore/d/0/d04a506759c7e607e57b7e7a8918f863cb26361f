@@ -1,0 +1,4 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÄÜì½
+m
+java:S1128"KRemove this unused import 'com.baomidou.mybatisplus.annotation.TableField'.(òëğıÿÿÿÿÿ8÷ŒÔ“î1

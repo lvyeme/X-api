@@ -1,0 +1,28 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(­€¶ùÿÿÿÿ8¸ö§”î1
+\
+java:S1854:":Remove this useless assignment to local variable "method".(™”öºúÿÿÿÿ8¾ö§”î1
+_
+java:S18549"BRemove this useless assignment to local variable "responseHeader".(›Á¢8¿ö§”î1
+c
+java:S18548"ARemove this useless assignment to local variable "requestHeader".(Ô•€øÿÿÿÿ8¿ö§”î1
+T
+java:S11357"2Complete the task associated to this TODO comment.(‘É¹²ùÿÿÿÿ8Àö§”î1
+T
+java:S14818"2Remove this unused "requestHeader" local variable.(Ô•€øÿÿÿÿ8Àö§”î1
+P
+java:S14819"3Remove this unused "responseHeader" local variable.(›Á¢8Àö§”î1
+M
+java:S1481:"+Remove this unused "method" local variable.(™”öºúÿÿÿÿ8Áö§”î1
+\
+java:S1854^":Remove this useless assignment to local variable "method".(ø„Ç¿ûÿÿÿÿ8Âö§”î1
+d
+java:S1854]"BRemove this useless assignment to local variable "responseHeader".(çéïÒúÿÿÿÿ8Âö§”î1
+^
+java:S1854\"ARemove this useless assignment to local variable "requestHeader".(ı´Ä8Âö§”î1
+O
+java:S1481\"2Remove this unused "requestHeader" local variable.(ı´Ä8Ãö§”î1
+U
+java:S1481]"3Remove this unused "responseHeader" local variable.(çéïÒúÿÿÿÿ8Ãö§”î1
+M
+java:S1481^"+Remove this unused "method" local variable.(ø„Ç¿ûÿÿÿÿ8Ãö§”î1

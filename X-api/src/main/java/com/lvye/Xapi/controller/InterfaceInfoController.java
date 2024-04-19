@@ -1,12 +1,15 @@
 package com.lvye.Xapi.controller;
 
 import cn.hutool.json.JSONUtil;
+import com.alibaba.excel.util.StringUtils;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lvye.Xapi.annotation.AuthCheck;
 import com.lvye.Xapi.common.BaseResponse;
 import com.lvye.Xapi.common.DeleteRequest;
 import com.lvye.Xapi.common.ErrorCode;
 import com.lvye.Xapi.common.ResultUtils;
+import com.lvye.Xapi.constant.CommonConstant;
 import com.lvye.Xapi.constant.UserConstant;
 import com.lvye.Xapi.exception.BusinessException;
 import com.lvye.Xapi.exception.ThrowUtils;
@@ -60,15 +63,9 @@ public class InterfaceInfoController {
         }
         InterfaceInfo interfaceInfo = new InterfaceInfo();
         BeanUtils.copyProperties(interfaceInfoAddRequest, interfaceInfo);
-        List<String> tags = interfaceInfoAddRequest.getTags();
-        if (tags != null) {
-            interfaceInfo.setTags(JSONUtil.toJsonStr(tags));
-        }
         interfaceInfoService.validInterfaceInfo(interfaceInfo, true);
         User loginUser = userService.getLoginUser(request);
         interfaceInfo.setUserId(loginUser.getId());
-        interfaceInfo.setFavourNum(0);
-        interfaceInfo.setThumbNum(0);
         boolean result = interfaceInfoService.save(interfaceInfo);
         ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
         long newInterfaceInfoId = interfaceInfo.getId();
@@ -114,10 +111,6 @@ public class InterfaceInfoController {
         }
         InterfaceInfo interfaceInfo = new InterfaceInfo();
         BeanUtils.copyProperties(interfaceInfoUpdateRequest, interfaceInfo);
-        List<String> tags = interfaceInfoUpdateRequest.getTags();
-        if (tags != null) {
-            interfaceInfo.setTags(JSONUtil.toJsonStr(tags));
-        }
         // 参数校验
         interfaceInfoService.validInterfaceInfo(interfaceInfo, false);
         long id = interfaceInfoUpdateRequest.getId();
@@ -145,7 +138,38 @@ public class InterfaceInfoController {
         }
         return ResultUtils.success(interfaceInfoService.getInterfaceInfoVO(interfaceInfo, request));
     }
-
+    /**
+     * 分页获取列表
+     *
+     * @param interfaceInfoQueryRequest
+     * @param request
+     * @return
+     */
+    @GetMapping("/list/page")
+    public BaseResponse<Page<InterfaceInfo>> listInterfaceInfoByPage(InterfaceInfoQueryRequest interfaceInfoQueryRequest, HttpServletRequest request) {
+        if (interfaceInfoQueryRequest == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        InterfaceInfo interfaceInfoQuery = new InterfaceInfo();
+        BeanUtils.copyProperties(interfaceInfoQueryRequest, interfaceInfoQuery);
+        long current = interfaceInfoQueryRequest.getCurrent();
+        long size = interfaceInfoQueryRequest.getPageSize();
+        String sortField = interfaceInfoQueryRequest.getSortField();
+        String sortOrder = interfaceInfoQueryRequest.getSortOrder();
+        String description = interfaceInfoQuery.getDescription();
+        // description 需支持模糊搜索
+        interfaceInfoQuery.setDescription(null);
+        // 限制爬虫
+        if (size > 50) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        QueryWrapper<InterfaceInfo> queryWrapper = new QueryWrapper<>(interfaceInfoQuery);
+        queryWrapper.like(StringUtils.isNotBlank(description), "description", description);
+        queryWrapper.orderBy(StringUtils.isNotBlank(sortField),
+                sortOrder.equals(CommonConstant.SORT_ORDER_ASC), sortField);
+        Page<InterfaceInfo> interfaceInfoPage = interfaceInfoService.page(new Page<>(current, size), queryWrapper);
+        return ResultUtils.success(interfaceInfoPage);
+    }
     /**
      * 分页获取列表（仅管理员）
      *
@@ -219,10 +243,6 @@ public class InterfaceInfoController {
         }
         InterfaceInfo interfaceInfo = new InterfaceInfo();
         BeanUtils.copyProperties(interfaceInfoEditRequest, interfaceInfo);
-        List<String> tags = interfaceInfoEditRequest.getTags();
-        if (tags != null) {
-            interfaceInfo.setTags(JSONUtil.toJsonStr(tags));
-        }
         // 参数校验
         interfaceInfoService.validInterfaceInfo(interfaceInfo, false);
         User loginUser = userService.getLoginUser(request);
