@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 /**
  * 查询请求
- *
  * @author <a href="https://github.com/lvyeme">lvye</a>
  * @from <a href="lvye">lvye</a>
  */

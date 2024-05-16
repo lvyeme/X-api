@@ -53,3 +53,37 @@ f
 X-api/pom.xml,a\5\a550fe476b956e6517b70df9a2d973b2e4c06311
 i
 9X-api/src/main/java/com/lvye/Xapi/common/PageRequest.java,0\7\07b1cd7eceea99980aef45f1e15a7049ff7459c1
+@
+X-api/sql/db.sql,8\9\896c893881cb90ec980d89d1f4a5be66b7c3692d
+J
+X-api/sql/create_table.sql,4\b\4bb106fc25f28ff3183d75f4fe4b7fdd7f37a9f4
+à
+XX-api/xapi-interface/src/main/java/com/lvye/xapiinterface/controller/NameController.java,b\5\b50556bd51c37510408c1932e5dfcc589929a411
+Å
+QX-api/xapi-client-sdk/src/main/java/com/lvye/xapiclientsdk/client/XApiClient.java,c\a\ca0fa600fe8bc728ce092912288e718426bc7c54
+á
+WX-api/xapi-interface/src/main/java/com/lvye/xapiinterface/XapiInterfaceApplication.java,e\e\eeb2b6454304ff1d86ad399d043f1a8b040e1aea
+Ä
+PX-api/xapi-client-sdk/src/main/java/com/lvye/xapiclientsdk/XapiClientConfig.java,1\7\179266d6d37e81f4e8e30395e86b5a3ae920ae50
+i
+9X-api/xapi-interface/src/main/resources/static/index.html,3\5\35a9b628e309ad11d86345f8029fcdfa9b1ac2c4
+g
+7X-api/xapi-interface/src/main/resources/application.yml,2\b\2b913dfd109cf3dc37e1d60281dba0afeae45f59
+r
+BX-api/xapi-client-sdk/src/main/resources/META-INF/spring.factories,c\3\c3728873169425d68883c3ab6357d2adedf9708c
+h
+8X-api/xapi-client-sdk/src/main/resources/application.yml,5\8\587a4ddcf79ae625d699870313fd06c9c16fc6c9
+z
+JX-api/xapi-client-sdk/src/main/java/com/lvye/xapiclientsdk/model/User.java,6\2\622da4d59d2a1719d7af149a70fb49f663390cfe
+
+OX-api/xapi-client-sdk/src/main/java/com/lvye/xapiclientsdk/utils/SignUtils.java,f\8\f892dd27bf182858892924c81e2e1fa6cef604cd
+L
+X-api/xapi-interface/pom.xml,6\b\6bea9067eb4ddc4339f328300952803502d78dac
+O
+X-api/xapi-interface/.gitignore,e\e\eea7e738c8fb8968c14092a9ece19f18d8a8f21c
+M
+X-api/xapi-client-sdk/pom.xml,d\a\da7b4e117ad02be57cf2f14f3429709974c6daed
+P
+ X-api/xapi-client-sdk/.gitignore,c\3\c3fa05fa98b9832c01dfb93192318ae8ea2703c4
+å
+\X-api/xapi-interface/src/test/java/com/lvye/xapiinterface/XapiInterfaceApplicationTests.java,9\0\90387f5eda1ebfefc84fca7af252b19fed2c424f
